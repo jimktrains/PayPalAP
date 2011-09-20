@@ -167,7 +167,7 @@ class PayPalAP
 			{
 				// redirect for web approval flow
 				$cmd = "cmd=_ap-payment&paykey=" . urldecode($resArray["payKey"]);
-				self::RedirectToPayPal ( $cmd );
+				return self::RedirectToPayPal ( $cmd );
 			}
 			else
 			{
@@ -634,7 +634,7 @@ class PayPalAP
 			$payPalURL = "https://www.paypal.com/webscr?" . $cmd;
 		}
 
-		header("Location: ".$payPalURL);
+		return $payPalURL;
 	}
 	
 	private static function deformatNVP($nvpstr)
