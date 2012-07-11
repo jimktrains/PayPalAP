@@ -13,16 +13,16 @@
 
 class PayPalAP
 {
-	private static $__apiUsername;
-	private static $__apiPassword;
-	private static $__apiSignature;
-	private static $__apiAppid;
-	private static $__env;
-	private static $__apiEndpoint;
-	
-	private static $__useProxy;
-	private static $__proxyHost;
-	private static $__proxyPort;
+	protected static $__apiUsername;
+	protected static $__apiPassword;
+	protected static $__apiSignature;
+	protected static $__apiAppid;
+	protected static $__env;
+	protected static $__apiEndpoint;
+
+	protected static $__useProxy;
+	protected static $__proxyHost;
+	protected static $__proxyPort;
 	
 	/*********************************************
 	* Public usage functions
@@ -552,7 +552,7 @@ class PayPalAP
 		return $resArray;
 	}
 	
-	private static function hash_call($methodName, $nvpStr)
+	protected static function hash_call($methodName, $nvpStr)
 	{
 		self::$__apiEndpoint .= "/" . $methodName;
 		//setting the curl parameters.
@@ -574,7 +574,7 @@ class PayPalAP
 		'X-PAYPAL-SECURITY-USERID: ' . self::$__apiUsername,
 		'X-PAYPAL-SECURITY-PASSWORD: ' .self::$__apiPassword,
 		'X-PAYPAL-SECURITY-SIGNATURE: ' . self::$__apiSignature,
-		'X-PAYPAL-SERVICE-VERSION: 1.3.0',
+		#'X-PAYPAL-SERVICE-VERSION: 1.3.0',
 		'X-PAYPAL-APPLICATION-ID: ' . self::$__apiAppid
 		));
 	
